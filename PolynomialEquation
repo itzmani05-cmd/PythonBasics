@@ -1,0 +1,31 @@
+equation = input("Enter a equation: ").strip()
+lhs, rhs = equation.split("=")
+
+final_list = []
+left_side = []
+getting_input = input("Enter a variable: ")
+
+
+replacing = lhs.replace("-", "+-")
+lhs = replacing.split('+')
+
+for char in lhs:
+    char = char.strip()
+    if char:
+        if(getting_input in char):
+            left_side.append(char)
+        else:
+            final_list.append(f'-({char})')
+
+replacing = rhs.replace("-", "+-")
+rhs = replacing.split('+')
+
+for char in rhs:
+    char = char.strip()
+    if char:
+        if(getting_input in char ):
+            left_side.append(f'-({char})')
+        else:
+            final_list.append(char)
+
+print(' + '.join(left_side) + " = " + " + ".join(final_list))
